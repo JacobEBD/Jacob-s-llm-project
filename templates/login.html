@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}登录{% endblock %}
+{% block content %}
+<h2>login</h2>
+<form method="POST">
+  <input type="text" name="username" class="form-control mb-2" placeholder="username" required>
+  <input type="password" name="password" class="form-control mb-2" placeholder="password" required>
+  <button type="submit" class="btn btn-primary">login</button>
+</form>
+{% endblock %}
