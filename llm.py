@@ -35,6 +35,8 @@ Return JSON like this (only pure JSON inside triple backticks please):
 """
 
     try:
+        data = response.json()
+        print("DeepSeek raw response:", data)
         response = requests.post(API_URL, headers=headers, json={
             "model": "deepseek-chat",
             "messages": [
