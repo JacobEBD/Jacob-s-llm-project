@@ -88,5 +88,5 @@ Return JSON like this (only pure JSON inside triple backticks please):
     else:
         return content
 
-except Exception as e:
-    return f"ERROR: {e}"
+    except Exception as e:
+        return f"ERROR: {e}"
