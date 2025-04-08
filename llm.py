@@ -41,52 +41,28 @@ Return JSON like this (only pure JSON inside triple backticks please):
 ```
 """
 
-    # try:
-    #     data = response.json()
-    #     print("DeepSeek raw response:", data)
-    #     response = requests.post(API_URL, headers=headers, json={
-    #         "model": "deepseek-chat",
-    #         "messages": [
-    #             {"role": "system", "content": "You are a helpful assistant."},
-    #             {"role": "user", "content": prompt}
-    #         ],
-    #         "temperature": 0.3
-    #     })
-
-    #     data = response.json()
-    #     content = data["choices"][0]["message"]["content"]
-
-    #     # 提取 JSON 内容
-    #     match = re.search(r'```json\n(.*?)```', content, re.DOTALL)
-    #     if match:
-    #         return match.group(1)
-    #     else:
-    #         return content
-
-    # except Exception as e:
-    #     return f"ERROR: {e}"
-
     try:
-    response = requests.post(API_URL, headers=headers, json={
-        "model": "deepseek-chat",
-        "messages": [
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": prompt}
-        ],
-        "temperature": 0.3
-    })
+        data = response.json()
+        print("DeepSeek raw response:", data)
+        response = requests.post(API_URL, headers=headers, json={
+            "model": "deepseek-chat",
+            "messages": [
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": prompt}
+            ],
+            "temperature": 0.3
+        })
 
-    data = response.json()
-    print("DeepSeek raw response:", data)
+        data = response.json()
+        content = data["choices"][0]["message"]["content"]
 
-    content = data["choices"][0]["message"]["content"]
-
-    # 提取 JSON 内容
-    match = re.search(r'```json\n(.*?)```', content, re.DOTALL)
-    if match:
-        return match.group(1)
-    else:
-        return content
+        # 提取 JSON 内容
+        match = re.search(r'```json\n(.*?)```', content, re.DOTALL)
+        if match:
+            return match.group(1)
+        else:
+            return content
 
     except Exception as e:
         return f"ERROR: {e}"
+
