@@ -42,20 +42,33 @@ Return JSON like this (only pure JSON inside triple backticks please):
 """
 
     try:
-        data = response.json()
-        print("DeepSeek raw response:", data)
+        # data = response.json()
+        # print("DeepSeek raw response:", data)
+        # response = requests.post(API_URL, headers=headers, json={
+        #     "model": "deepseek-chat",
+        #     "messages": [
+        #         {"role": "system", "content": "You are a helpful assistant."},
+        #         {"role": "user", "content": prompt}
+        #     ],
+        #     "temperature": 0.3
+        # })
+
+        # data = response.json()
+        # content = data["choices"][0]["message"]["content"]
+        
         response = requests.post(API_URL, headers=headers, json={
-            "model": "deepseek-chat",
-            "messages": [
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": prompt}
-            ],
-            "temperature": 0.3
+        "model": "deepseek-chat",
+        "messages": [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ],
+        "temperature": 0.3
         })
 
         data = response.json()
+        print("DeepSeek raw response:", data)
         content = data["choices"][0]["message"]["content"]
-
+    
         # 提取 JSON 内容
         match = re.search(r'```json\n(.*?)```', content, re.DOTALL)
         if match:
