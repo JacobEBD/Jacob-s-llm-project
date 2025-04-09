@@ -4,22 +4,10 @@ from dotenv import load_dotenv
 import json
 import re
 
-
-
-if os.getenv("RAILWAY_ENVIRONMENT") is None:
-    from dotenv import load_dotenv
-    load_dotenv()
+load_dotenv()
 
 API_KEY = os.getenv("DEEPSEEK_API_KEY")
-print("API key:", os.getenv("DEEPSEEK_API_KEY"))
 API_URL = "https://api.deepseek.com/chat/completions"
-
-
-# load_dotenv()
-# API_KEY = os.getenv("DEEPSEEK_API_KEY")
-# print("DeepSeek API Key:", API_KEY)
-# API_KEY = os.getenv("DEEPSEEK_API_KEY")
-# API_URL = "https://api.deepseek.com/chat/completions"
 
 headers = {
     "Content-Type": "application/json",
@@ -46,33 +34,18 @@ Return JSON like this (only pure JSON inside triple backticks please):
 """
 
     try:
-        # data = response.json()
-        # print("DeepSeek raw response:", data)
-        # response = requests.post(API_URL, headers=headers, json={
-        #     "model": "deepseek-chat",
-        #     "messages": [
-        #         {"role": "system", "content": "You are a helpful assistant."},
-        #         {"role": "user", "content": prompt}
-        #     ],
-        #     "temperature": 0.3
-        # })
-
-        # data = response.json()
-        # content = data["choices"][0]["message"]["content"]
-        
         response = requests.post(API_URL, headers=headers, json={
-        "model": "deepseek-chat",
-        "messages": [
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": prompt}
-        ],
-        "temperature": 0.3
+            "model": "deepseek-chat",
+            "messages": [
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": prompt}
+            ],
+            "temperature": 0.3
         })
 
         data = response.json()
-        print("DeepSeek raw response:", data)
         content = data["choices"][0]["message"]["content"]
-    
+
         # 提取 JSON 内容
         match = re.search(r'```json\n(.*?)```', content, re.DOTALL)
         if match:
@@ -82,4 +55,3 @@ Return JSON like this (only pure JSON inside triple backticks please):
 
     except Exception as e:
         return f"ERROR: {e}"
-
