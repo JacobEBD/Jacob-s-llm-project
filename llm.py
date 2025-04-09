@@ -6,7 +6,6 @@ import re
 
 load_dotenv()
 
-# API_KEY = "sk-317a77a7add641f8b36a6850cff659fb"
 API_KEY = os.getenv("DEEPSEEK_API_KEY")
 print(API_KEY)
 API_URL = "https://api.deepseek.com/chat/completions"
