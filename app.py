@@ -12,8 +12,8 @@ app.config['UPLOAD_FOLDER'] = 'static/uploads'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 
-USERNAME = 'admin'
-PASSWORD = '1234'
+USERNAME = 'Jacob'
+PASSWORD = '2005'
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
