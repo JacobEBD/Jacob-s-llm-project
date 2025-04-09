@@ -48,7 +48,6 @@ Return JSON like this (only pure JSON inside triple backticks please):
         data = response.json()
         content = data["choices"][0]["message"]["content"]
 
-        # 提取 JSON 内容
         match = re.search(r'```json\n(.*?)```', content, re.DOTALL)
         if match:
             return match.group(1)
