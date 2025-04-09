@@ -8,7 +8,7 @@ if os.getenv("RAILWAY_ENVIRONMENT") is None:
     from dotenv import load_dotenv
     load_dotenv()
 
-API_KEY = os.getenv("DEEPSEEK_API_KEY")
+API_KEY = “sk-317a77a7add641f8b36a6850cff659fb”
 print("API key:", os.getenv("DEEPSEEK_API_KEY"))
 API_URL = "https://api.deepseek.com/chat/completions"
 
