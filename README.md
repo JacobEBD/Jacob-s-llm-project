@@ -11,4 +11,11 @@
 3. 处理完成后以表格形式展示分析结果
 
 运行网页：web-production-a98c8.up.railway.app
+sample csv：
+https://drive.google.com/file/d/1EAarpWydyOLO9F0x3ub8VW7qOQcZJBqp/view?usp=sharing
+
+comment：
+The product quality exceeded my expectations.
+I had an issue, but it was resolved promptly.
+The website is user-friendly and easy to navigate.
  
